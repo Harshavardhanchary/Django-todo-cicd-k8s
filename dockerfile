@@ -1,11 +1,12 @@
-FROM python:3.13.2
+FROM  python:3.13.0
+WORKDIR /app
 
-WORKDIR /data
-
-RUN pip install django==3.2
+RUN pip install --upgrade pip
+COPY requirements.txt requirements.txt
+COPY . .
+RUN pip install -r requirements.txt
 
 COPY . .
+EXPOSE 8000:8000
 
-EXPOSE 8000
-RUN python manage.py migrate
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
