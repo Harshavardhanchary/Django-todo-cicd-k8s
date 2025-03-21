@@ -4,6 +4,7 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
+        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials' // Update this with your Docker credentials ID
     }
     
     stages {
@@ -20,7 +21,7 @@ pipeline {
             steps{
                 script{
                     sh '''
-                    echo 'Buid Docker Image'
+                    echo 'Build Docker Image'
                     docker build -t harshavardhan303/cicd-e2e:${BUILD_NUMBER} .
                     '''
                 }
@@ -30,12 +31,24 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push harshavardhan303/cicd-e2e:${BUILD_NUMBER}
-                    '''
+                    withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh '''
+                        echo 'Logging in to Docker Hub'
+                        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                        if [ $? -ne 0 ]; then
+                            echo 'Docker login failed'
+                            exit 1
+                        fi
+                        echo 'Push to Repo'
+                        docker push harshavardhan303/cicd-e2e:${BUILD_NUMBER}
+                        if [ $? -ne 0 ]; then
+                            echo 'Docker push failed'
+                            exit 1
+                        fi
+                        '''
                     }
                 }
             }
         }
     }
+}
