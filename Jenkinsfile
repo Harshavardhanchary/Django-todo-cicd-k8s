@@ -4,7 +4,7 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials' // Update this with your Docker credentials ID
+        DOCKER_CREDENTIALS_ID = 'docker' // Update this with your Docker credentials ID
     }
     
     stages {
@@ -31,7 +31,7 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
-                    withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: "${Docker}", usernameVariable: 'DOCKER_UERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh '''
                         echo 'Logging in to Docker Hub'
                         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
