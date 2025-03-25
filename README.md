@@ -5,34 +5,32 @@ A simple todo app built with django
 ### Setup
 To get this repository, run the following command inside your git enabled terminal
 ```bash
-$ git clone https://github.com/shreys7/django-todo.git
+$ git clone https://github.com/Harshavardhanchary/Django-todo-cicd-k8s.git
 ```
-You will need django to be installed in you computer to run this app. Head over to https://www.djangoproject.com/download/ for the download guide
+You will need docker and jenkins  to be installed in you terminal to run this app.
 
-Once you have downloaded django, go to the cloned repo directory and run the following command
+Once you have downloaded docker, go to the cloned repo directory and run the following command
 
 ```bash
-$ python manage.py makemigrations
+$ docker build -t firstbuild:v1 .
 ```
 
-This will create all the migrations file (database migrations) required to run this App.
+This will create a docker image  required to run this app as a container.
 
-Now, to apply this migrations run the following command
+Now, run the following command to run the container
 ```bash
-$ python manage.py migrate
+$ docker run -d -p 8080:8080 "image-id"
 ```
 
-One last step and then our todo App will be live. We need to create an admin user to run this App. On the terminal, type the following command and provide username, password and email for the admin user
-```bash
-$ python manage.py createsuperuser
-```
+Your Web-application will be live
+Acess the app at
+````bash
+$ http://localhost:8080 #if you're running this app in your local-machine(i.e your personal laptop)
+````
+Acess th app at
+````bash
+$ http://'<your-instance-ip'>:8080 #if you're running this remotely(Ex :In ec2) 
+````
 
-That was pretty simple, right? Now let's make the App live. We just need to start the server now and then we can start using our simple todo App. Start the server by following command
-
-```bash
-$ python manage.py runserver
-```
-
-Once the server is hosted, head over to http://127.0.0.1:8000/todos for the App.
 
 Cheers and Happy Coding :)
