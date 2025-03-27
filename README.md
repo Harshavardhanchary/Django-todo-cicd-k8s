@@ -27,10 +27,16 @@ Acess the app at
 ````bash
 $ http://localhost:8080 #if you're running this app in your local-machine(i.e your personal laptop)
 ````
-Acess th app at
+Acess the app at
 ````bash
 $ http://'<your-instance-ip'>:8080 #if you're running this remotely(Ex :In ec2) 
 ````
+````bash
+$ 
+````
 
 
-Cheers and Happy Coding :)
+
+
+
+Cheers and Happy Deploying :)
