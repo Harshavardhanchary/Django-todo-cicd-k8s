@@ -59,7 +59,7 @@ pipeline {
                         cat deploy.yaml
 
                         # Replace 32 with the build number dynamically
-                        sed -i "s/32/${BUILD_NUMBER}/g" deploy.yaml
+                        sed -i "s/0/${BUILD_NUMBER}/g" deploy.yaml
 
                         echo 'Updated deploy.yaml content:'
                         cat deploy.yaml
