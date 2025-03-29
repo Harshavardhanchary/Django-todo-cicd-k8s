@@ -33,7 +33,6 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh '''
                         echo 'Login to Docker Hub'
-                        docker login -u harshavardhan303 -p Chary@357
                         echo 'Push to Repo'
                         docker push harshavardhan303/cicd-e2e:${BUILD_NUMBER}
                         '''
