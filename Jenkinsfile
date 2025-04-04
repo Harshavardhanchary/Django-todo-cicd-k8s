@@ -58,7 +58,7 @@ pipeline {
                         // Replace build number in the deploy.yaml dynamically
                         echo "Updating deploy.yaml with build number ${BUILD_NUMBER}"
                         sh """
-                            sed -i 's/2/${BUILD_NUMBER}/g' deploy.yaml
+                            sed -i 's/image-latest/${BUILD_NUMBER}/g' deploy.yaml
                         """
 
                         echo 'Updated deploy.yaml content:'
