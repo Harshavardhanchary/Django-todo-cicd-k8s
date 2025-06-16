@@ -32,5 +32,9 @@ Acess the app at
 $ http://'<your-instance-ip'>:8080 #if you're running this remotely(Ex :In ec2) 
 ````
 
+LinkedIn post link
+````bash
+https://www.linkedin.com/posts/harshavardhanchary_django-jenkins-githubwebhook-activity-7313990221627305984-3hJz?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz3mW4B171gTsn6JVIeRfKuamSLnx_jKj4
 
+````
 Cheers and Happy Deploying :)
