@@ -31,12 +31,6 @@ Acess the app at
 ````bash
 $ http://'<your-instance-ip'>:8080 #if you're running this remotely(Ex :In ec2) 
 ````
-````bash
-$ 
-````
-
-
-
 
 
 Cheers and Happy Deploying :)
